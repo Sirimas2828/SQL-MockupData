@@ -3,13 +3,14 @@ hat are the Top 25 schools (.edu domains)? (Answer - SQL & Result)
 
 --Answer: 
 
-Select email_domain AS 'E-mail Domain',
+`Select email_domain AS 'E-mail Domain',
 Count(email_domain) AS 'Total'
 From users
 Where email_domain like '%.edu'
 Group BY 1
 Order By 2 DESC
-Limit 25;
+Limit 25;`
+----------------------------------------------------------------------------------------------------
 
 
 Case No.2 
@@ -17,33 +18,36 @@ How many .edu learners are located in New York?  (Answer - SQL & Result)
 
 --Answer: Total Learner = 50
 
-Select email_domain AS 'E-mail Domain',
+`Select email_domain AS 'E-mail Domain',
 Count(email_domain) AS 'Total Learner'
 From users
-Where email_domain like '%.edu' AND city = 'New York';
+Where email_domain like '%.edu' AND city = 'New York';`
 
-
+--------------------------------------------------------------------------------------------------------
 Case No.3
 The mobile_app column contains either mobile-user or NULL. How many of these Codecademy learners are using the mobile app? (Answer - SQL & Result)
 
 --Answer: 330 learners who use mobile app or 16% use mobile app.
 
-Select mobile_app AS 'Mobile_App_User',
+`Select mobile_app AS 'Mobile_App_User',
 count(user_id) As 'No_Of_Users',
 100 * COUNT(mobile_app) / (SELECT COUNT(*) FROM users) AS '%'
 From users
 Where mobile_app IS Not null
-AND mobile_app != '' ;
+AND mobile_app != '' ;`
+-----------------------------------------------------------------------------------------------------------
 
 Case No.4
 Query for the sign-up counts for each hour  (Answer - SQL & Result)
 
 --Answer: 
-SELECT
+`SELECT
   strftime('%H', sign_up_at) AS 'Signup Time',
   COUNT(*) AS 'No. Of Signup users' 
 FROM users 
-GROUP BY 1 ;
+GROUP BY 1 ;`
+
+-------------------------------------------------------------------------------------------------------------
 
 
 Case no.5 
@@ -55,7 +59,7 @@ SQL query below
 
 with summary as
 
-(
+`(
 SELECT
 users.email_domain as 'School',
 
@@ -80,8 +84,9 @@ round(((1.0 * LearnHTMLCount / NoStudents)*100),2) as PercentHTML,
 round(((1.0 * LearnJavaScriptCount / NoStudents)*100),2) as PercentJavascript,
 round(((1.0 * LearnJavaCount / NoStudents)*100),2) as PercentHJava
 
-from summary;
+from summary;`
 
+-------------------------------------------------------------------------------------------------
 
 Case No. 6 
 What courses are the New Yorkers students taking? (Answer - SQL & Result)
@@ -90,7 +95,7 @@ What courses are the New Yorkers students taking? (Answer - SQL & Result)
 SQL query below
 -----------------------------------------------
 
-SELECT
+`SELECT
 
 city,
 
@@ -106,8 +111,8 @@ on u.user_id = p.user_id
 
 where city = 'New York'
 
-group by 1;
-
+group by 1;`
+--------------------------------------------------------------------------------------------------------------------
 
 Case No. 7
 What courses are the Chicago students taking?
@@ -116,7 +121,7 @@ What courses are the Chicago students taking?
 SQL query below
 ------------------------------
 
-SELECT
+`SELECT
 
 city,
 
@@ -132,4 +137,4 @@ on u.user_id = p.user_id
 
 where city = 'Chicago'
 
-group by 1;
+group by 1;`
